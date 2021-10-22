@@ -1,0 +1,10 @@
+{
+	"name": "tutfw/tut-fw",
+	"autoload" : {
+		"psr-4": {"tutfw\\": ""},
+		"classmap" : ["vendor/"]
+	},
+	"bin": [
+        "tutfw"
+    ]
+}
