@@ -9,33 +9,58 @@ class TutFw
 {
 	/** @var BaseObject */
 	static $fw;
-	/** @var UrlManager */
-	static $router;
 	
-	public function __construct(array $config)
+	/** @var UrlManager */
+	static $urlManager;
+	
+	/** @var array Default url manager setting */
+	private static $defaultUrlManager = [
+		'class' => 'tutfw\base\UrlManager',
+		'default_url' => '',
+		'rules' => [
+//			'[regular_expression_rules]' => '<route>',
+			'[|/]' => 'site/index',
+		]
+	];
+	
+	/**
+	 * @param array $config
+	 */
+	private static function init(array $config)
 	{
 		if (empty(self::$fw)) {
 			self::$fw = new BaseObject($config);
 		}
-	}
-	
-	/**
-	 * @throws \Exception
-	 * @todo MVC
-	 * @todo route to module -> controller -> action
-	 */
-	public function run()
-	{
+		
 		if (!isset(self::$fw->urlManager)) {
-			throw new \Exception('UrlManager is not defined.');
+			self::$fw->urlManager = self::$defaultUrlManager;
 		}
 		
 		if (!isset(self::$fw->urlManager['class'])) {
-			throw new \Exception('UrlManager class index is not defined.');
+			self::$fw->urlManager['class'] = self::$defaultUrlManager['class'];
 		}
 		
-		self::$router = new self::$fw->urlManager['class']();
-		self::$router->getRoute();
+		if (!isset(self::$fw->urlManager['rules'])) {
+			self::$fw->urlManager['rules'] = self::$defaultUrlManager['rules'];
+		}
+		
+		if (!isset(self::$fw->urlManager['controller'])) {
+			self::$fw->urlManager['controller'] = self::$defaultUrlManager['controller'];
+		}
+	}
+	
+	/**
+	 * @param array $config
+	 *
+	 * @todo MVC
+	 * @todo route to controller -> action
+	 */
+	public static function run(array $config)
+	{
+		self::init($config);
+		
+		self::$urlManager = new UrlManager(self::$fw->urlManager);
+		return self::$urlManager->handler();
 	}
 	
 }

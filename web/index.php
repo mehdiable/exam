@@ -3,4 +3,4 @@
 require(__DIR__ . '/../vendor/autoload.php');
 $config = include(__DIR__ . '/../conf/config.php');
 
-(new \tutfw\base\TutFw($config))->run();
+\tutfw\base\TutFw::run($config);
