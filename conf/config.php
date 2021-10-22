@@ -14,6 +14,7 @@ return [
 //		params key-value
 	],
 	'urlManager' => [
+		'class' => 'tutfw\base\UrlManager',
 		'controller' => '',
 		'rules' => [
 //			'[regular_expression_rules]' => '<route>',
