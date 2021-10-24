@@ -2,7 +2,8 @@
 
 return [
 	'database' => 'tutfw',
-	'user' => '',
-	'password' => '',
-	'uri' => 'mongodb://127.0.0.1/',
+	'user' => 'tutfw_admin',
+	'password' => 'tutfw-project',
+	'host' => '127.0.0.1',
+	'port' => '27017',
 ];
