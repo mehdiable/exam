@@ -10,16 +10,15 @@ return [
 	'id' => 'pt.st',
 	'name' => 'Programming Turorial',
 	'version' => '1.0',
+	'lang' => 'fa',
 	'params' => [
 //		params key-value
 	],
 	'urlManager' => [
 		'class' => 'tutfw\base\UrlManager',
-		'controller' => '',
+		'route' => 'site/index',
 		'rules' => [
-//			'[regular_expression_rules]' => '<route>',
-			'[|/]' => 'site/index',
-			'exam' => 'exam/index',
+			'site' => 'site/index',
 		]
 	],
 ];

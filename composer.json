@@ -6,5 +6,8 @@
 	},
 	"bin": [
         "tutfw"
-    ]
+    ],
+	"require": {
+		"mongodb/mongodb": "^1.9"
+	}
 }
