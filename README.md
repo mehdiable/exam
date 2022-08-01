@@ -9,7 +9,8 @@ Make your microservice and enjoy :
 - git remote set-url origin '___https://your.git/repository/address/url.git___'
 
 ## requirements
-- docker version >= 20.10.17
+- docker
+- git
 
 ## Initializing new project
 - cd docker/phpfpm
