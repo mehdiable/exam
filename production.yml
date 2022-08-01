@@ -1,0 +1,67 @@
+version: "3.9"
+
+services:
+
+  mongodb:
+    image: mongodb:5.0.9
+    volumes:
+      - ./docker/mongodb/data:/data/db
+    networks:
+      - inet
+
+  webapp:
+    image: phpfpm:8.1.8
+    depends_on:
+      - mongodb
+    working_dir: /application
+    volumes:
+      - ./application:/application/main
+#      - ./react_app:/application/react
+#      - ./vue_app:/application/vue
+      - ./docker/phpfpm/php-fpm.d/zz-docker_dev.conf:/usr/local/etc/php-fpm.d/zz-docker.conf
+      - ./docker/phpfpm/log:/var/log/php-fpm/
+      - ./docker/phpfpm/cron:/etc/cron.d/
+    command: ["sh", "-c", "(cron -f &) && php-fpm" ]
+    networks:
+      - inet
+
+  nginx:
+    image: nginx:latest
+    working_dir: /application
+    volumes:
+      - ./application:/application/backend
+      - ./appreact_dev:/application/frontend
+      - ./docker/nginx/nginx_dev.conf:/etc/nginx/nginx.conf
+      - ./docker/nginx/log:/var/log/nginx
+      - ./docker/nginx/conf.d/default_dev.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 8080:8080
+      - 81:80
+    depends_on:
+      - webapp
+    networks:
+      - inet
+    deploy:
+      replicas: 4
+      update_config:
+        parallelism: 2
+        order: start-first
+        failure_action: rollback
+        delay: 10s
+      rollback_config:
+        parallelism: 0
+        order: stop-first
+      restart_policy:
+        condition: any
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    healthcheck:
+      test: ["CMD", "service", "nginx", "status"]
+
+networks:
+  inet:
+    driver: overlay
+    ipam:
+      config:
+        - subnet: 192.168.50.0/16

@@ -1,0 +1,15 @@
+{
+	"name": "tutfw/tutfw-project",
+	"autoload" : {
+		"psr-4": {
+			"tutfw\\": ""
+		},
+		"classmap" : ["vendor/"]
+	},
+	"bin": [
+        "tutfw"
+    ],
+	"require": {
+		"mongodb/mongodb": "^1.9"
+	}
+}

@@ -1,0 +1,1 @@
+* * * * * root cd /application && /usr/local/bin/php cline.php result:calculating >> /var/log/cron.log 2>&1
