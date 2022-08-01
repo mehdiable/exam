@@ -6,6 +6,7 @@
 Make your microservice and enjoy :
 
 ## git 
+- make your repository and :
 - git remote set-url origin '___https://your.git/repository/address/url.git___'
 
 ## requirements
