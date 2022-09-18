@@ -1,4 +1,4 @@
 .idea
-/docker/mongodb/data
-/docker/nginx/log
-/docker/phpfpm/log
+/docker/mongodb/data/
+/docker/nginx/log/
+/docker/phpfpm/log/
