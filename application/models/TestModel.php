@@ -8,6 +8,6 @@ use tutfw\vendor\tutfw\base\Model;
 
 class TestModel extends Model
 {
-	protected $database = 'tutfw';
+#	protected $connection = 'default';
 	protected $collection = 'test';
 }
