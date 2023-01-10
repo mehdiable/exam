@@ -1,5 +1,6 @@
 {
 	"name": "tutfw/tutfw-project",
+	"description": "Tutfw-Project is new PHP microservice based project.",
 	"autoload" : {
 		"psr-4": {
 			"tutfw\\": ""
@@ -10,6 +11,7 @@
         "tutfw"
     ],
 	"require": {
-		"mongodb/mongodb": "^1.9"
+		"mongodb/mongodb": "^1.9",
+		"tutfw/tutfw": "^1.0",
 	}
 }
