@@ -1,6 +1,7 @@
 {
 	"name": "tutfw/tutfw-project",
 	"description": "Tutfw-Project is new PHP microservice based project.",
+	"license": "MIT",
 	"autoload" : {
 		"psr-4": {
 			"tutfw\\": ""
@@ -8,8 +9,8 @@
 		"classmap" : ["vendor/"]
 	},
 	"bin": [
-        "tutfw"
-    ],
+        	"tutfw"
+    	],
 	"require": {
 		"mongodb/mongodb": "^1.9",
 		"tutfw/tutfw": "^1.0",
