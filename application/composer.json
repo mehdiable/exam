@@ -13,6 +13,6 @@
     	],
 	"require": {
 		"mongodb/mongodb": "^1.9",
-		"tutfw/tutfw": "^1.0",
+		"tutfw/tutfw": "^1.0"
 	}
 }
