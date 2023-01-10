@@ -1,0 +1,10 @@
+{
+	"name": "tutfw/tutfw-project",
+	"description": "Tutfw-Project is new PHP microservice based project.",
+	"license": "MIT",
+	"bin": [
+    "tutfw"
+  ],
+	"require": {
+	}
+}
